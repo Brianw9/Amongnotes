@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane fx:id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" prefHeight="450.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NoteView.Controller">
+   <children>
+      <VBox layoutY="25.0" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" prefHeight="450.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem fx:id="closeWindow" mnemonicParsing="false" onAction="#handleClose" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem fx:id="editNamesMenu" mnemonicParsing="false" text="Edit Names" />
+                        <MenuItem fx:id="resetMenu" mnemonicParsing="false" onAction="#initialize" text="Reset" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Suspicious" underline="true" wrappingWidth="239.58203125">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <HBox fx:id="suspiciousBox" minHeight="60.0" prefHeight="60.0" prefWidth="250.0" />
+            <Text layoutX="15.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cleared" underline="true" wrappingWidth="238.23046875">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <HBox fx:id="clearedBox" minHeight="60.0" prefHeight="60.0" prefWidth="250.0" />
+            <Text layoutX="15.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Undecided" underline="true" wrappingWidth="237.234375">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <VBox prefHeight="250.0" prefWidth="250.0">
+               <children>
+                  <HBox fx:id="undecidedBoxOne" prefHeight="60.0" prefWidth="250.0">
+                     <children>
+                        <ImageView fx:id="YellowPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/YellowCrewmate.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="WhitePlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/WhiteCrewmate.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="BluePlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/BlueCrewmate.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="RedPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/RedCrewmate.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="undecidedBoxTwo" prefHeight="60.0" prefWidth="250.0">
+                     <children>
+                        <ImageView fx:id="BlackPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/BlackCrewmate.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="CyanPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/CyanCrewmate.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="LimePlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/LimeCrewmate.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="BrownPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/BrownCrewmate.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="undecidedBoxThree" prefHeight="60.0" prefWidth="250.0">
+                     <children>
+                        <ImageView fx:id="PurplePlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PurpleCrewmate.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="GreenPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/GreenCrewmate.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="PinkPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PinkCrewmate.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="OrangePlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/OrangeCrewmate.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="undecidedBoxFour" prefHeight="60.0" prefWidth="250.0" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
