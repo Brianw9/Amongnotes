@@ -101,12 +101,39 @@ public class Controller {
 
     ArrayList<PlayerModel> PlayerModels = new ArrayList<PlayerModel>();
 
+    ArrayList<ImageView> ResetBoxOne = new ArrayList<>();
+    ArrayList<ImageView> ResetBoxTwo = new ArrayList<>();
+    ArrayList<ImageView> ResetBoxThree = new ArrayList<>();
+
+
     @FXML
-    public void initialize(){
+    public void resetPlayers(){
         for (int i = 0; i < PlayerModels.size(); i++){
             PlayerModels.get(i).setDead(false);
             PlayerModels.get(i).getPlayerImageView().setImage(PlayerModels.get(i).getAliveImageURL());
+
         }
+
+        for (int x = 0; x < ResetBoxOne.size(); x++){
+            if (!undecidedBoxOne.getChildren().contains(ResetBoxOne.get(x))){
+                undecidedBoxOne.getChildren().add(ResetBoxOne.get(x));
+            }
+        }
+        for (int x = 0; x < ResetBoxTwo.size(); x++){
+            if (!undecidedBoxTwo.getChildren().contains(ResetBoxTwo.get(x))){
+                undecidedBoxTwo.getChildren().add(ResetBoxTwo.get(x));
+            }
+        }
+        for (int x = 0; x < ResetBoxThree.size(); x++){
+            if (!undecidedBoxThree.getChildren().contains(ResetBoxThree.get(x))){
+                undecidedBoxThree.getChildren().add(ResetBoxThree.get(x));
+            }
+        }
+
+    }
+
+    @FXML
+    public void initialize(){
         YellowPlayerModel.setPlayerImageView(YellowPlayerImage);
         WhitePlayerModel.setPlayerImageView(WhitePlayerImage);
         BluePlayerModel.setPlayerImageView(BluePlayerImage);
@@ -133,8 +160,18 @@ public class Controller {
         PlayerModels.add(PinkPlayerModel);
         PlayerModels.add(OrangePlayerModel);
 
-
-        System.out.println("Second Reset");
+        ResetBoxOne.add(YellowPlayerImage);
+        ResetBoxOne.add(WhitePlayerImage);
+        ResetBoxOne.add(BluePlayerImage);
+        ResetBoxOne.add(RedPlayerImage);
+        ResetBoxTwo.add(BlackPlayerImage);
+        ResetBoxTwo.add(CyanPlayerImage);
+        ResetBoxTwo.add(LimePlayerImage);
+        ResetBoxTwo.add(BrownPlayerImage);
+        ResetBoxThree.add(PurplePlayerImage);
+        ResetBoxThree.add(GreenPlayerImage);
+        ResetBoxThree.add(PinkPlayerImage);
+        ResetBoxThree.add(OrangePlayerImage);
 
     }
 
@@ -157,8 +194,11 @@ public class Controller {
                 } else {
                     PlayerModels.get(i).getPlayerImageView().setImage(PlayerModels.get(i).getAliveImageURL());
                 }
+//                suspiciousBox.getChildren().add(PlayerModels.get(i).getPlayerImageView());
             }
+
         }
+
     }
 
     @FXML
@@ -171,6 +211,16 @@ public class Controller {
     public void handleMouseExit() {
         Stage primaryStage = (Stage) AnchorPane.getScene().getWindow();
         primaryStage.setOpacity(0.25);
+    }
+
+    @FXML
+    public void handleDragStart(){
+
+    }
+
+    @FXML
+    public void handleDragStop(){
+
     }
 
 }

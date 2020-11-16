@@ -28,7 +28,7 @@
                 <Menu mnemonicParsing="false" text="Edit">
                   <items>
                     <MenuItem fx:id="editNamesMenu" mnemonicParsing="false" text="Edit Names" />
-                        <MenuItem fx:id="resetMenu" mnemonicParsing="false" onAction="#initialize" text="Reset" />
+                        <MenuItem fx:id="resetMenu" mnemonicParsing="false" onAction="#resetPlayers" text="Reset" />
                   </items>
                 </Menu>
               </menus>
@@ -63,7 +63,7 @@
                <children>
                   <HBox fx:id="undecidedBoxOne" prefHeight="60.0" prefWidth="250.0">
                      <children>
-                        <ImageView fx:id="YellowPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="YellowPlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onDragDropped="#handleDragStop" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/YellowCrewmate.png" />
                            </image>
