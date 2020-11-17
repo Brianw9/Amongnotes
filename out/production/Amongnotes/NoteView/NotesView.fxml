@@ -41,7 +41,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <HBox fx:id="suspiciousBox" minHeight="60.0" prefHeight="60.0" prefWidth="250.0" />
+            <HBox fx:id="suspiciousBox" minHeight="60.0" onDragDropped="#handleDragStop" onDragOver="#handleDragOver" prefHeight="60.0" prefWidth="250.0" />
             <Text layoutX="15.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cleared" underline="true" wrappingWidth="238.23046875">
                <VBox.margin>
                   <Insets left="5.0" right="5.0" />
@@ -50,7 +50,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <HBox fx:id="clearedBox" minHeight="60.0" prefHeight="60.0" prefWidth="250.0" />
+            <HBox fx:id="clearedBox" minHeight="60.0" onDragDropped="#handleDragStop" onDragOver="#handleDragOver" prefHeight="60.0" prefWidth="250.0" />
             <Text layoutX="15.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Undecided" underline="true" wrappingWidth="237.234375">
                <VBox.margin>
                   <Insets left="5.0" right="5.0" />
@@ -61,79 +61,79 @@
             </Text>
             <VBox prefHeight="250.0" prefWidth="250.0">
                <children>
-                  <HBox fx:id="undecidedBoxOne" prefHeight="60.0" prefWidth="250.0">
+                  <HBox fx:id="undecidedBoxOne" onDragDropped="#handleDragStop" onDragOver="#handleDragOver" prefHeight="60.0" prefWidth="250.0">
                      <children>
-                        <ImageView fx:id="YellowPlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onDragDropped="#handleDragStop" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="YellowPlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/YellowCrewmate.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="WhitePlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="WhitePlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/WhiteCrewmate.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="BluePlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="BluePlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onMouseClicked="#handleMouseClick" onMouseDragReleased="#handleDragStop" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/BlueCrewmate.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="RedPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="RedPlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/RedCrewmate.png" />
                            </image>
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox fx:id="undecidedBoxTwo" prefHeight="60.0" prefWidth="250.0">
+                  <HBox fx:id="undecidedBoxTwo" onDragDropped="#handleDragStop" onDragOver="#handleDragOver" prefHeight="60.0" prefWidth="250.0">
                      <children>
-                        <ImageView fx:id="BlackPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="BlackPlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/BlackCrewmate.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="CyanPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CyanPlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/CyanCrewmate.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="LimePlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="LimePlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/LimeCrewmate.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="BrownPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="BrownPlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/BrownCrewmate.png" />
                            </image>
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox fx:id="undecidedBoxThree" prefHeight="60.0" prefWidth="250.0">
+                  <HBox fx:id="undecidedBoxThree" onDragDropped="#handleDragStop" onDragOver="#handleDragOver" prefHeight="60.0" prefWidth="250.0">
                      <children>
-                        <ImageView fx:id="PurplePlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="PurplePlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PurpleCrewmate.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="GreenPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="GreenPlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/GreenCrewmate.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="PinkPlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="PinkPlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PinkCrewmate.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="OrangePlayerImage" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="OrangePlayerImage" fitHeight="50.0" fitWidth="50.0" onDragDetected="#handleDragStart" onMouseClicked="#handleMouseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/OrangeCrewmate.png" />
                            </image>
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox fx:id="undecidedBoxFour" prefHeight="60.0" prefWidth="250.0" />
+                  <HBox fx:id="undecidedBoxFour" onDragDropped="#handleDragStop" onDragOver="#handleDragOver" prefHeight="60.0" prefWidth="250.0" />
                </children>
             </VBox>
          </children>

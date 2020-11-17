@@ -3,11 +3,13 @@ package NoteView;
 import javafx.event.ActionEvent;
 import javafx.event.EventTarget;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -16,8 +18,10 @@ import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Controller {
 
+    public ImageView DraggedContent;
 
     @FXML
     private javafx.scene.layout.AnchorPane AnchorPane;
@@ -86,24 +90,24 @@ public class Controller {
     private ImageView PinkPlayerImage;
 
 
-    PlayerModel YellowPlayerModel = new PlayerModel("Yellow", YellowPlayerImage, false, "resources/YellowCrewmate.png", "resources/YellowBody.png");
-    PlayerModel WhitePlayerModel = new PlayerModel("White", WhitePlayerImage, false,"resources/WhiteCrewmate.png", "resources/WhiteBody.png");
-    PlayerModel BluePlayerModel = new PlayerModel("Blue", BluePlayerImage, false, "resources/BlueCrewmate.png", "resources/BlueBody.png");
-    PlayerModel RedPlayerModel = new PlayerModel("Red", RedPlayerImage, false, "resources/RedCrewmate.png","resources/RedBody.png");
-    PlayerModel BlackPlayerModel = new PlayerModel("Black", BlackPlayerImage, false, "resources/BlackCrewmate.png", "resources/BlackBody.png");
-    PlayerModel CyanPlayerModel = new PlayerModel("Cyan", CyanPlayerImage, false, "resources/CyanCrewmate.png", "resources/CyanBody.png");
-    PlayerModel LimePlayerModel = new PlayerModel("Lime", LimePlayerImage, false, "resources/LimeCrewmate.png", "resources/LimeBody.png");
-    PlayerModel BrownPlayerModel = new PlayerModel("Brown", BrownPlayerImage, false, "resources/BrownCrewmate.png", "resources/BrownBody.png");
-    PlayerModel PurplePlayerModel = new PlayerModel("Purple", PurplePlayerImage, false, "resources/PurpleCrewmate.png","resources/PurpleBody.png");
-    PlayerModel GreenPlayerModel = new PlayerModel("Green", GreenPlayerImage, false, "resources/GreenCrewmate.png","resources/GreenBody.png");
-    PlayerModel PinkPlayerModel = new PlayerModel("Pink", PinkPlayerImage, false, "resources/PinkCrewmate.png", "resources/PinkBody.png");
-    PlayerModel OrangePlayerModel = new PlayerModel("Orange", OrangePlayerImage, false, "resources/OrangeCrewmate.png", "resources/OrangeBody.png");
+    private PlayerModel YellowPlayerModel = new PlayerModel("Yellow", YellowPlayerImage, false, "resources/YellowCrewmate.png", "resources/YellowBody.png");
+    private PlayerModel WhitePlayerModel = new PlayerModel("White", WhitePlayerImage, false,"resources/WhiteCrewmate.png", "resources/WhiteBody.png");
+    private PlayerModel BluePlayerModel = new PlayerModel("Blue", BluePlayerImage, false, "resources/BlueCrewmate.png", "resources/BlueBody.png");
+    private PlayerModel RedPlayerModel = new PlayerModel("Red", RedPlayerImage, false, "resources/RedCrewmate.png","resources/RedBody.png");
+    private PlayerModel BlackPlayerModel = new PlayerModel("Black", BlackPlayerImage, false, "resources/BlackCrewmate.png", "resources/BlackBody.png");
+    private PlayerModel CyanPlayerModel = new PlayerModel("Cyan", CyanPlayerImage, false, "resources/CyanCrewmate.png", "resources/CyanBody.png");
+    private PlayerModel LimePlayerModel = new PlayerModel("Lime", LimePlayerImage, false, "resources/LimeCrewmate.png", "resources/LimeBody.png");
+    private PlayerModel BrownPlayerModel = new PlayerModel("Brown", BrownPlayerImage, false, "resources/BrownCrewmate.png", "resources/BrownBody.png");
+    private PlayerModel PurplePlayerModel = new PlayerModel("Purple", PurplePlayerImage, false, "resources/PurpleCrewmate.png","resources/PurpleBody.png");
+    private PlayerModel GreenPlayerModel = new PlayerModel("Green", GreenPlayerImage, false, "resources/GreenCrewmate.png","resources/GreenBody.png");
+    private PlayerModel PinkPlayerModel = new PlayerModel("Pink", PinkPlayerImage, false, "resources/PinkCrewmate.png", "resources/PinkBody.png");
+    private PlayerModel OrangePlayerModel = new PlayerModel("Orange", OrangePlayerImage, false, "resources/OrangeCrewmate.png", "resources/OrangeBody.png");
 
-    ArrayList<PlayerModel> PlayerModels = new ArrayList<PlayerModel>();
+    private ArrayList<PlayerModel> PlayerModels = new ArrayList<PlayerModel>();
 
-    ArrayList<ImageView> ResetBoxOne = new ArrayList<>();
-    ArrayList<ImageView> ResetBoxTwo = new ArrayList<>();
-    ArrayList<ImageView> ResetBoxThree = new ArrayList<>();
+    private ArrayList<ImageView> ResetBoxOne = new ArrayList<>();
+    private ArrayList<ImageView> ResetBoxTwo = new ArrayList<>();
+    private ArrayList<ImageView> ResetBoxThree = new ArrayList<>();
 
 
     @FXML
@@ -189,16 +193,23 @@ public class Controller {
         for (int i = 0; i < PlayerModels.size(); i++){
             if (e.getSource().toString().contains(PlayerModels.get(i).getPlayerColor())){
                 PlayerModels.get(i).setDead(!PlayerModels.get(i).isDead());
-                if (PlayerModels.get(i).isDead() == true){
+                if (PlayerModels.get(i).isDead()){
                     PlayerModels.get(i).getPlayerImageView().setImage(PlayerModels.get(i).getDeadImageURL());
                 } else {
                     PlayerModels.get(i).getPlayerImageView().setImage(PlayerModels.get(i).getAliveImageURL());
                 }
-//                suspiciousBox.getChildren().add(PlayerModels.get(i).getPlayerImageView());
             }
 
         }
 
+    }
+
+    public ImageView getDraggedImage(){
+        return DraggedContent;
+    }
+
+    public void setDraggedImage(ImageView playerImage){
+        DraggedContent = playerImage;
     }
 
     @FXML
@@ -210,17 +221,59 @@ public class Controller {
     @FXML
     public void handleMouseExit() {
         Stage primaryStage = (Stage) AnchorPane.getScene().getWindow();
-        primaryStage.setOpacity(0.25);
+        primaryStage.setOpacity(0.2);
     }
 
     @FXML
-    public void handleDragStart(){
+    public void handleDragStart(MouseEvent e){
+        for (int i = 0; i < PlayerModels.size(); i++) {
+            if (e.getSource().toString().contains(PlayerModels.get(i).getPlayerColor())) {
+                setDraggedImage(PlayerModels.get(i).getPlayerImageView());
+                System.out.println(DraggedContent);
+                ImageView currentImage = PlayerModels.get(i).getPlayerImageView();
+                Dragboard dragged = currentImage.startDragAndDrop(TransferMode.ANY);
+                ClipboardContent content = new ClipboardContent();
+                content.putString(currentImage.getId());
+                dragged.setContent(content);
+                ImageView testImage = PlayerModels.get(i).getPlayerImageView();
 
+                dragged.setDragView(testImage.snapshot(null, null), 25, 25);
+            }
+        }
     }
 
     @FXML
-    public void handleDragStop(){
-
+    public void handleDragOver(DragEvent e){
+        e.acceptTransferModes(TransferMode.COPY);
     }
 
+
+
+    @FXML
+    public void handleDragStop(DragEvent e){
+        Dragboard db = e.getDragboard();
+//        if (db.hasImage()) {
+//            e.setDropCompleted(true);
+//        } else {
+//            e.setDropCompleted(false);  //dont know if this is needed at all honestly
+//        }
+        System.out.println(e.getTarget());
+        System.out.println(DraggedContent);
+        System.out.println("test");
+        for (int i = 0; i < PlayerModels.size(); i++) {
+            if (e.getTarget() == suspiciousBox){
+                 suspiciousBox.getChildren().add(DraggedContent);
+            } else if (e.getTarget() == clearedBox){
+                clearedBox.getChildren().add(DraggedContent);
+            } else if (e.getTarget() == undecidedBoxOne){
+                undecidedBoxOne.getChildren().add(DraggedContent);
+            } else if (e.getTarget() == undecidedBoxTwo){
+                undecidedBoxTwo.getChildren().add(DraggedContent);
+            } else if (e.getTarget() == undecidedBoxFour){
+                undecidedBoxThree.getChildren().add(DraggedContent);
+            } else if (e.getTarget() == undecidedBoxFour){
+                undecidedBoxFour.getChildren().add(DraggedContent);
+            }
+        }
+    }
 }
