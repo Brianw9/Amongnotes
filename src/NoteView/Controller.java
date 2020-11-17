@@ -229,14 +229,12 @@ public class Controller {
         for (int i = 0; i < PlayerModels.size(); i++) {
             if (e.getSource().toString().contains(PlayerModels.get(i).getPlayerColor())) {
                 setDraggedImage(PlayerModels.get(i).getPlayerImageView());
-                System.out.println(DraggedContent);
                 ImageView currentImage = PlayerModels.get(i).getPlayerImageView();
                 Dragboard dragged = currentImage.startDragAndDrop(TransferMode.ANY);
                 ClipboardContent content = new ClipboardContent();
                 content.putString(currentImage.getId());
                 dragged.setContent(content);
                 ImageView testImage = PlayerModels.get(i).getPlayerImageView();
-
                 dragged.setDragView(testImage.snapshot(null, null), 25, 25);
             }
         }
@@ -251,15 +249,12 @@ public class Controller {
 
     @FXML
     public void handleDragStop(DragEvent e){
-        Dragboard db = e.getDragboard();
+//        Dragboard db = e.getDragboard();
 //        if (db.hasImage()) {
 //            e.setDropCompleted(true);
 //        } else {
 //            e.setDropCompleted(false);  //dont know if this is needed at all honestly
 //        }
-        System.out.println(e.getTarget());
-        System.out.println(DraggedContent);
-        System.out.println("test");
         for (int i = 0; i < PlayerModels.size(); i++) {
             if (e.getTarget() == suspiciousBox){
                  suspiciousBox.getChildren().add(DraggedContent);

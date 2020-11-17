@@ -22,7 +22,7 @@ public class Main extends Application {
         primaryStage.setOpacity(0.5);
         primaryStage.setAlwaysOnTop(true);
         primaryStage.setTitle("Among Notes");
-        primaryStage.setScene(new Scene(root, 200, 350));
+        primaryStage.setScene(new Scene(root, 200, 400));
         primaryStage.setResizable(false);
         primaryStage.show();
     }
